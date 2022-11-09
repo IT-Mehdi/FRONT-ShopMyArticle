@@ -1,10 +1,11 @@
+import React from 'react'
+import StripeContainer from './stripe/StripeContainer';
 
 function App() {
   return (
-    <div className="App">
-      <p>
-        oui {process.env.REACT_APP_test}
-      </p>
+    <div>
+      <h1>Test</h1>
+      <StripeContainer />
     </div>
   );
 }
