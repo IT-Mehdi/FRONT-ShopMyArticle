@@ -1,0 +1,51 @@
+h1 {
+    color: rgb(52, 57, 87);
+    text-transform:uppercase;
+}
+
+.container{
+    height: 100%;
+    width: 50%;
+    background-color: rgb(247, 196, 196);
+    margin: auto;
+    text-align: center;
+}
+
+input {
+    width: 93%;
+    text-align: center;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+img{
+    width: 50%;
+}
+
+button {
+    margin-bottom: 5px;
+    width: 30%;
+    align-items: center;
+    background-color: #c6ffc8; /* Green */
+    border: none;
+    color: rgb(52, 57, 87);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.price {
+    font-weight: bolder;
+}
