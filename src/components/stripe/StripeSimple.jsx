@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProductDisplay = ({name}) => (
     <form action="/create-checkout-session" method="POST">
@@ -11,33 +12,24 @@ const ProductDisplay = ({name}) => (
     </form>
 );
 
-const Message = ({ message }) => (
-  <section>
-    <p>{message}</p>
-  </section>
-);
 
 export default function StripeSimple({name}) {
-  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
 
     if (query.get("success")) {
-      setMessage("Order placed! You will receive an email confirmation.");
+      navigate("/success");
     }
 
     if (query.get("canceled")) {
-      setMessage(
-        "Order canceled -- continue to shop around and checkout when you're ready."
-      );
+      navigate("/cancel");
     }
   }, []);
 
-  return message ? (
-    <Message message={message} />
-  ) : (
+  return (
     <ProductDisplay name={name}/>
-  );
+);
 }
