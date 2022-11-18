@@ -8,7 +8,6 @@ const Form = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    alert(e.nativeEvent.submitter.name);
     setEmail("");
   };
 
