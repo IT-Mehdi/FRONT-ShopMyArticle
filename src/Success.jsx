@@ -2,11 +2,6 @@ import {Link} from "react-router-dom"
 
 function Success() {
 
-    const handleOnClick = (e) => {
-        e.preventDefault();
-        window.location.replace("http://localhost:3000")
-      };
-
     return (
         <div className="container">
         <h1>Thank you for your purchase</h1>
