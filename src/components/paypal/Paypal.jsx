@@ -26,11 +26,21 @@ function Paypal() {
         }}
         onApprove={(data, actions) => {
           return actions.order.capture().then(function (details) {
-            navigate("/success");
             // This function shows a transaction success message to your buyer.
-            //alert("Transaction completed by " + details.payer.name.given_name);
+            navigate("/success");
           });
         }}
+        /* // ça fonctionne mais c'est nul
+        onCancel={(data, actions) => {
+          return navigate("/cancel");
+        }}
+        */
+        /*
+        onError={(err) => {
+          //TODO on peut payer même lorsqu'on n'a plus d'argent car le compte est lié à une cart infini
+          return navigate("/cancel");
+        }}
+        */
       />
     </PayPalScriptProvider>
   );
