@@ -1,11 +1,15 @@
+import React from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { useNavigate } from "react-router-dom";
 
 function Paypal() {
+  const navigate = useNavigate();
+
   return (
     <PayPalScriptProvider
       options={{
-        "client-id":
-          "AXcTRDeJ9rEJ1qB7kyZStKJTi9sWpxI474fG2oOK84PTBXMvh0N19sBzTxOTMUaxK9qvE3Ukks6VbOdk",
+        "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID,
+        currency: "EUR",
       }}
     >
       <PayPalButtons
@@ -14,7 +18,7 @@ function Paypal() {
             purchase_units: [
               {
                 amount: {
-                  value: "45.00",
+                  value: 99.99,
                 },
               },
             ],
@@ -22,8 +26,9 @@ function Paypal() {
         }}
         onApprove={(data, actions) => {
           return actions.order.capture().then(function (details) {
+            navigate("/success");
             // This function shows a transaction success message to your buyer.
-            alert("Transaction completed by " + details.payer.name.given_name);
+            //alert("Transaction completed by " + details.payer.name.given_name);
           });
         }}
       />
