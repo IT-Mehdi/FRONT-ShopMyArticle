@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Button from "../button/Button";
 import Paypal from "../paypal/Paypal";
 
 const Form = () => {
@@ -8,7 +7,6 @@ const Form = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    alert(e.nativeEvent.submitter.name);
     setEmail("");
   };
 
