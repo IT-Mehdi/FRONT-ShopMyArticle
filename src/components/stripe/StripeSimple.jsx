@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-const ProductDisplay = () => (
+const ProductDisplay = ({name}) => (
     <form action="/create-checkout-session" method="POST">
-      <button type="submit">
-        Checkout
+      <button type="submit" className="button">
+        {name}
       </button>
       {/* <a href="https://buy.stripe.com/test_bIY3g34qjdnz8N29AA" type="button">
         Checkout
@@ -17,7 +17,7 @@ const Message = ({ message }) => (
   </section>
 );
 
-export default function StripeSimple() {
+export default function StripeSimple({name}) {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -38,6 +38,6 @@ export default function StripeSimple() {
   return message ? (
     <Message message={message} />
   ) : (
-    <ProductDisplay />
+    <ProductDisplay name={name}/>
   );
 }
