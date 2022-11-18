@@ -1,20 +1,22 @@
-import Form from "./components/form/Form";
 import "./index.css";
-import product from "./img/product.png";
+import Shop from "./Shop";
+import Success from "./Success";
+
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   return (
-    <div className="container">
-      <h1>Shop my article</h1>
-      <h2>Shop our brand new product</h2>
-      <img src={product} alt="image produit"></img>
-      <p>
-        Avec ce pdf tu sauras écrire ton propre programme de sport pour
-        atteindre tes objectifs !
-      </p>
-      <p className="price">Price : 99.99€</p>
-      <Form></Form>
-    </div>
+    <Router>
+      <div>
+        <Link to="/">Shop</Link>
+      </div>
+
+      <Routes>
+        <Route path="/success" element={<Success />} />
+        {/*<Route path="/cancel" element={<Cancel />} />*/}
+        <Route path="/" element={<Shop />} />
+      </Routes>
+    </Router>
   );
 }
 
