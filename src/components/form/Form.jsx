@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "../button/Button";
 import Paypal from "../paypal/Paypal";
+import StripeSimple from "../stripe/StripeSimple";
 
 const Form = () => {
   const [email, setEmail] = useState("");
@@ -24,9 +25,6 @@ const Form = () => {
       <div className="flex-container">
         <button type="submit" name="customStripe">
           J'achète avec custom Stripe
-        </button>
-        <button type="submit" name="classicStripe">
-          J'achète avec classic Stripe
         </button>
         <Paypal></Paypal>
       </div>
