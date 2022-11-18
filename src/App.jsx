@@ -1,10 +1,11 @@
 import './index.css';
 import Shop from './Shop';
 import Success from './Success';
+import Cancel from './Cancel';
 
 import {
   BrowserRouter as Router,
-  Routes, Route, Link
+  Routes, Route
 } from "react-router-dom"
 
 
@@ -14,13 +15,9 @@ function App() {
 
   return (
     <Router>
-      <div>
-        <Link to="/">Shop</Link>
-      </div>
-
       <Routes>
         <Route path="/success" element={<Success />} />
-        {/*<Route path="/cancel" element={<Cancel />} />*/}
+        <Route path="/cancel" element={<Cancel />} />
         <Route path="/" element={<Shop />} />
       </Routes>
     </Router>
