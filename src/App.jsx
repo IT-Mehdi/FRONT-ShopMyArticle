@@ -14,6 +14,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
 export default function App() {
   const [clientSecret, setClientSecret] = useState("");
+  const [showPayment, setShowPayment] = useState(false);
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
@@ -34,7 +35,7 @@ export default function App() {
     appearance,
   };
 
-  return (
+  return (showPayment) ? (
     <div className="App">
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
@@ -42,5 +43,5 @@ export default function App() {
         </Elements>
       )}
     </div>
-  );
+  ) : <button onClick={() => { setShowPayment(true) }}>Acheter maintenant</button>;
 }
