@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+const fetchStripe = () => {
+  fetch("/create-checkout-session", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      window.location.href = data.url;
+    })
+}
+
 const ProductDisplay = ({name}) => (
-    <form action="/create-checkout-session" method="POST">
-      <button type="submit" className="button">
+      <button type="submit" className="button" onClick={fetchStripe}>
         {name}
       </button>
-      {/* <a href="https://buy.stripe.com/test_bIY3g34qjdnz8N29AA" type="button">
-        Checkout
-      </a> */}
-    </form>
 );
 
 
