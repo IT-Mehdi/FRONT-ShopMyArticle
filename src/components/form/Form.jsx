@@ -27,7 +27,7 @@ const Form = () => {
         <button className="button" onClick={() => {
           navigate('/stripeCustom', { state: { email: email } })
         }}> J'achète avec custom stripe</button>
-        <StripeSimple name="J'achète avec classic Stripe" />
+        <StripeSimple email={email} name="J'achète avec classic Stripe" />
         <div className="button"><Paypal ></Paypal></div>
       </div>
     </form>
