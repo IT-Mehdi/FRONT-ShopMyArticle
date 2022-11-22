@@ -54,6 +54,10 @@ img{
     margin: 5px;
 }
 
+button:hover {
+    cursor:pointer;
+}
+
 .price {
     font-weight: bolder;
 }
