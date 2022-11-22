@@ -21,20 +21,7 @@ const ProductDisplay = ({ name }) => (
 
 
 export default function StripeSimple({ name }) {
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    // Check to see if this is a redirect back from Checkout
-    const query = new URLSearchParams(window.location.search);
-
-    if (query.get("success")) {
-      navigate("/success");
-    }
-
-    if (query.get("canceled")) {
-      navigate("/cancel");
-    }
-  }, []);
 
   return (
     <ProductDisplay name={name} />
