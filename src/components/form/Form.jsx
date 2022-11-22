@@ -24,7 +24,7 @@ const Form = () => {
         <button className="button" type="submit" name="customStripe">
           J'achète avec custom Stripe
         </button>
-        <StripeSimple name="J'achète avec classic Stripe"/>
+        <StripeSimple email={email} name="J'achète avec classic Stripe"/>
         <div className="button"><Paypal ></Paypal></div>
       </div>
     </form>
