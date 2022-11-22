@@ -26,6 +26,7 @@ function Paypal() {
             alert("Transaction completed by " + details.payer.name.given_name);
           });
         }}
+        color="silver"
       />
     </PayPalScriptProvider>
   );
