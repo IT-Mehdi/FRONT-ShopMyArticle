@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Paypal from "../paypal/Paypal";
 import StripeSimple from "../stripe/StripeSimple";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
   const [email, setEmail] = useState("");
@@ -10,6 +11,8 @@ const Form = () => {
     e.preventDefault();
     setEmail("");
   };
+
+  const navigate = useNavigate();
 
   return (
     <form onSubmit={handleOnSubmit}>
@@ -21,10 +24,10 @@ const Form = () => {
       />{" "}
       <br />
       <div className="flex-container">
-        <button className="button" type="submit" name="customStripe">
-          J'achète avec custom Stripe
-        </button>
-        <StripeSimple name="J'achète avec classic Stripe"/>
+        <button className="button" onClick={() => {
+          navigate('/stripeCustom', { state: { email: email } })
+        }}> J'achète avec custom stripe</button>
+        <StripeSimple name="J'achète avec classic Stripe" />
         <div className="button"><Paypal ></Paypal></div>
       </div>
     </form>

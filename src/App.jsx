@@ -4,6 +4,7 @@ import Success from "./Success";
 import Cancel from "./Cancel";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import StripeCustom from "./components/stripe/StripeCustom";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/success" element={<Success />} />
         <Route path="/cancel" element={<Cancel />} />
         <Route path="/" element={<Shop />} />
+        <Route path="/stripeCustom" element={<StripeCustom />} />
       </Routes>
     </Router>
   );
