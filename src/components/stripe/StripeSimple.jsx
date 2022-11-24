@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 
-const fetchStripe = () => {
+const fetchStripe = (email) => {
   fetch("/create-checkout-session", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(),
+    body: JSON.stringify({email: email}),
   })
     .then((res) => res.json())
     .then((data) => {
@@ -13,30 +12,17 @@ const fetchStripe = () => {
     })
 }
 
-const ProductDisplay = ({ name }) => (
-  <button type="submit" className="button" onClick={fetchStripe}>
+const ProductDisplay = ({ name, email }) => (
+  <button type="submit" className="button" onClick={() => { fetchStripe(email)}}>
     {name}
   </button>
 );
 
 
-export default function StripeSimple({ name }) {
-  const navigate = useNavigate();
+export default function StripeSimple({ name, email }) {
 
-  useEffect(() => {
-    // Check to see if this is a redirect back from Checkout
-    const query = new URLSearchParams(window.location.search);
-
-    if (query.get("success")) {
-      navigate("/success");
-    }
-
-    if (query.get("canceled")) {
-      navigate("/cancel");
-    }
-  }, []);
 
   return (
-    <ProductDisplay name={name} />
+    <ProductDisplay name={name} email={email} />
   );
 }
