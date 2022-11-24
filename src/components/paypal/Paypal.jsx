@@ -5,6 +5,17 @@ import { useNavigate } from "react-router-dom";
 function Paypal() {
   const navigate = useNavigate();
 
+  /*Style color: la couleur
+          label: le libbelé sur le bouton paypal
+          layout: mise en page (avoir plusieurs payement ou juste paypal)
+          shape: la forme du boutton (rect/pill)
+  */
+  const style = { color: "gold",
+                  height: 55,
+                  label: "pay",
+                  layout: "vertical",
+                  shape: "pill"}
+
   return (
     <PayPalScriptProvider
       options={{
@@ -13,6 +24,7 @@ function Paypal() {
       }}
     >
       <PayPalButtons
+        style={style}
         createOrder={(data, actions) => {
           return actions.order.create({
             purchase_units: [
@@ -26,21 +38,9 @@ function Paypal() {
         }}
         onApprove={(data, actions) => {
           return actions.order.capture().then(function (details) {
-            // This function shows a transaction success message to your buyer.
             navigate("/success");
           });
         }}
-        /* // ça fonctionne mais c'est nul
-        onCancel={(data, actions) => {
-          return navigate("/cancel");
-        }}
-        */
-        /*
-        onError={(err) => {
-          //TODO on peut payer même lorsqu'on n'a plus d'argent car le compte est lié à une cart infini
-          return navigate("/cancel");
-        }}
-        */
       />
     </PayPalScriptProvider>
   );
